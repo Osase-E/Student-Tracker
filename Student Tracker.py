@@ -86,7 +86,7 @@ class StudentTracker():
         global Login
         username = self.usernameE.get()
         pswd = self.passwordE.get()
-        connection = sqlite3.connect('Main Database')
+        connection = sqlite3.connect('Main Database') #Replace with name of database file
         crsr = connection.cursor()
         crsr.execute('''SELECT * from Teacher_Login WHERE Username=? AND Password=?''', (username, pswd,))
         connection.commit()
@@ -169,7 +169,7 @@ class StudentTracker():
         connection = sqlite3.connect('Main Database')
         crsr = connection.cursor()
         try:
-            sender = 'sydneyrusselltracker@gmail.com'
+            sender = 'sydneyrusselltracker@gmail.com' #Enter the email address of the school
             receive = self.emailFE.get()
             subject = 'Login Details'
             crsr.execute('''SELECT Password FROM Teacher_Login WHERE Email=?''', (receive,))
@@ -189,7 +189,7 @@ class StudentTracker():
                 mail = smtplib.SMTP('smtp.gmail.com', 587)
                 mail.ehlo()
                 mail.starttls()
-                mail.login(sender, '6Monkeys?')
+                mail.login(sender, '6Monkeys?') #(sender, password)
                 mail.sendmail(sender, receive, msg + (message))
                 mail.close()
                 messagebox.showinfo('Success!', 'An email has been sent to %s with the login details' % (receive))
@@ -449,7 +449,7 @@ class StudentTracker():
                 tempListA.append(i[0][::] + ' ' + i[1][::])
             mainStudentList = tempListA
             tempListB = []
-            crsr.execute('SELECT SName FROM Attendance')
+            crsr.execute('SELECT SName FROM Attendance') #StudentName
             # Retrieves the list of students from the attendance table
             atStudentList = crsr.fetchall()
             for i in atStudentList:
