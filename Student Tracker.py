@@ -169,7 +169,7 @@ class StudentTracker():
         connection = sqlite3.connect('Main Database')
         crsr = connection.cursor()
         try:
-            sender = 'sydneyrusselltracker@gmail.com' #Enter the email address of the school
+            sender = 'EMAIL_ADDRESS' #Enter the email address of the school
             receive = self.emailFE.get()
             subject = 'Login Details'
             crsr.execute('''SELECT Password FROM Teacher_Login WHERE Email=?''', (receive,))
